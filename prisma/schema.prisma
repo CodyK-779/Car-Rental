@@ -14,14 +14,39 @@ model Car {
   model        String
   year         Int
   dailyPrice   Int
-  Type         CarType
-  Transmission TransmissionType
-  Fuel         FuelType
-  Seating      Int
+  type         CarType
+  transmission TransmissionType
+  fuel         FuelType
+  carStatus    CarStatus
+  seating      Int
+  description  String
+  userId       String
   createdAt    DateTime         @default(now())
   updatedAt    DateTime         @updatedAt
+  booking      Booking[]
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("car")
+}
+
+model Booking {
+  id        String        @id @default(cuid())
+  userId    String
+  carId     String
+  startDate String
+  endDate   String
+  carStatus CarStatus     @default(AVAILABLE)
+  status    BookingStatus @default(Pending)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  //Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  car  Car  @relation(fields: [carId], references: [id], onDelete: Cascade)
+
+  @@map("booking0")
 }
 
 model User {
@@ -34,6 +59,8 @@ model User {
   updatedAt     DateTime  @updatedAt
   sessions      Session[]
   accounts      Account[]
+  car           Car[]
+  booking       Booking[]
 
   @@unique([email])
   @@map("user")
@@ -84,6 +111,12 @@ model Verification {
   @@map("verification")
 }
 
+enum BookingStatus {
+  Pending
+  Cancelled
+  Confirmed
+}
+
 enum CarType {
   SUV
   Sedan
@@ -108,4 +141,9 @@ enum FuelType {
   Petrol
   Electric
   Hybrid
+}
+
+enum CarStatus {
+  AVAILABLE
+  UNAVAILABLE
 }
