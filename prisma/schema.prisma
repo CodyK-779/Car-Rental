@@ -18,6 +18,7 @@ model Car {
   transmission TransmissionType
   fuel         FuelType
   carStatus    CarStatus
+  location     Location
   seating      Int
   description  String
   userId       String
@@ -146,4 +147,12 @@ enum FuelType {
 enum CarStatus {
   AVAILABLE
   UNAVAILABLE
+}
+
+enum Location {
+  Mandalay
+  Yangon
+  Naypyitaw
+  Sagaing
+  rakhine
 }
