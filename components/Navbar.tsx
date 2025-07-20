@@ -26,7 +26,7 @@ const Navbar = ({ openMenu, setOpenMenu }: Props) => {
     <nav className="fixed top-0 py-1 z-10 w-full bg-black text-white">
       <div className="max-w-7xl mx-auto px-2 flex items-center justify-between gap-2">
         <Link href="/" className="flex items-center gap-2">
-          <Image src={logo} alt="logo" width={80} height={80} />
+          <Image src={logo} alt="logo" width={70} height={70} />
           <p className="text-2xl font-bold">Car Rental</p>
         </Link>
         <ul className="hidden lg:flex items-center text-lg font-medium gap-10">
@@ -52,9 +52,12 @@ const Navbar = ({ openMenu, setOpenMenu }: Props) => {
             <SignOutButton />
           )}
 
-          {/* <Button className="bg-white hover:bg-neutral-200 text-black transition-colors duration-150 ease-in font-bold">
-            Add Listing
-          </Button> */}
+          <Button
+            className="bg-white hover:bg-neutral-200 text-black transition-colors duration-150 ease-in font-bold"
+            asChild
+          >
+            <Link href="/dashboard/manage-bookings">Add Listing</Link>
+          </Button>
         </div>
         <div className="lg:hidden" onClick={() => setOpenMenu(true)}>
           <i className="ri-menu-line text-2xl pr-2"></i>

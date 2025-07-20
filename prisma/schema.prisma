@@ -12,13 +12,15 @@ model Car {
   id           String           @id @default(cuid())
   brand        String
   model        String
+  img          String
   year         Int
   dailyPrice   Int
   type         CarType
   transmission TransmissionType
   fuel         FuelType
-  carStatus    CarStatus
+  carStatus    CarStatus        @default(AVAILABLE)
   location     Location
+  class        Class
   seating      Int
   description  String
   userId       String
@@ -36,9 +38,8 @@ model Booking {
   id        String        @id @default(cuid())
   userId    String
   carId     String
-  startDate String
-  endDate   String
-  carStatus CarStatus     @default(AVAILABLE)
+  startDate DateTime
+  endDate   DateTime
   status    BookingStatus @default(Pending)
   createdAt DateTime      @default(now())
   updatedAt DateTime      @updatedAt
@@ -47,7 +48,8 @@ model Booking {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   car  Car  @relation(fields: [carId], references: [id], onDelete: Cascade)
 
-  @@map("booking0")
+  @@unique([carId])
+  @@map("booking")
 }
 
 model User {
@@ -154,5 +156,17 @@ enum Location {
   Yangon
   Naypyitaw
   Sagaing
-  rakhine
+  Rakhine
+}
+
+enum Class {
+  A_Class
+  B_Class
+  C_Class
+  D_Class
+  E_Class
+  F_Class
+  J_Class
+  M_Class
+  S_Class
 }
