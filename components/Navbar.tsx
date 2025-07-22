@@ -56,7 +56,7 @@ const Navbar = ({ openMenu, setOpenMenu }: Props) => {
             className="bg-white hover:bg-neutral-200 text-black transition-colors duration-150 ease-in font-bold"
             asChild
           >
-            <Link href="/dashboard/manage-bookings">Add Listing</Link>
+            <Link href="/dashboard/add-car">Add Listing</Link>
           </Button>
         </div>
         <div className="lg:hidden" onClick={() => setOpenMenu(true)}>

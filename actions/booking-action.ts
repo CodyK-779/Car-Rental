@@ -1,6 +1,7 @@
 "use server";
 
 import { auth } from "@/lib/auth";
+import { BookingStatus } from "@/lib/generated/prisma";
 import { prisma } from "@/lib/prisma";
 import { headers } from "next/headers";
 
@@ -63,5 +64,25 @@ export async function getBookedCars(userId: string) {
   } catch (error) {
     console.error("Failed to get bookings", error);
     throw new Error("Failed to get bookings")
+  }
+}
+
+export async function updateBookingStatus(id: string, status: BookingStatus) {
+  try {
+    if (!id) return { success: false, message: "Missing booking ID" };
+
+    await prisma.booking.update({
+      where: {
+        id
+      },
+      data: {
+        status
+      }
+    });
+
+    return { success: true };
+  } catch (error) {
+    console.error("Failed to update booking status.", error);
+    throw new Error("Failed to update booking status.")
   }
 }

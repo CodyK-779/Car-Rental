@@ -4,13 +4,11 @@ import { Badge } from "@/components/ui/badge";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { EyeOffIcon, Trash2Icon } from "lucide-react";
 import Image from "next/image";
 
 export default async function ManageCarsPage() {
@@ -20,7 +18,7 @@ export default async function ManageCarsPage() {
 
   return (
     <div className="pt-10 px-3 md:px-8 w-full">
-      <h1 className="text-3xl text-center md:text-start font-medium">
+      <h1 className="text-3xl text-center md:text-start font-semibold">
         Manage Cars
       </h1>
       <p className="mt-2 text-center md:text-start text-neutral-500">
@@ -47,7 +45,7 @@ export default async function ManageCarsPage() {
                       <Image
                         src={car.img}
                         alt="audi"
-                        width={40}
+                        width={60}
                         height={60}
                         className="rounded-md object-cover"
                       />

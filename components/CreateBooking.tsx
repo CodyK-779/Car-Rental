@@ -14,18 +14,17 @@ import { toast } from "sonner";
 
 interface Props {
   carId: string;
+  ownerId: string;
 }
 
-const CreateBooking = ({ carId }: Props) => {
+const CreateBooking = ({ carId, ownerId }: Props) => {
   const [startDate, setStartDate] = useState<Date | undefined>(undefined);
   const [endDate, setEndDate] = useState<Date | undefined>(undefined);
   const [isPending, setIsPending] = useState(false);
   const { data: session } = useSession();
   const router = useRouter();
 
-  if (!session) return;
-
-  const userId = session.user.id;
+  const userId = session?.user.id;
 
   const disableSubmit = startDate === undefined || endDate === undefined;
 
@@ -35,7 +34,15 @@ const CreateBooking = ({ carId }: Props) => {
     setIsPending(true);
 
     try {
-      const results = await createBooking(userId, carId, startDate, endDate);
+      if (ownerId === userId) {
+        toast.error("You cannot book your own car.");
+        setIsPending(false);
+        setStartDate(undefined);
+        setEndDate(undefined);
+        return;
+      }
+
+      const results = await createBooking(userId!, carId, startDate, endDate);
 
       if (results?.success) {
         toast.success("Booking created successfully!");
@@ -51,7 +58,7 @@ const CreateBooking = ({ carId }: Props) => {
   };
 
   return (
-    <div className="lg:min-w-[380px] w-full rounded-xl shadow-md bg-white border-2 border-neutral-200 px-4 py-5">
+    <div className="lg:max-w-[380px] md:min-w-[350px] w-full rounded-xl shadow-md bg-white border-2 border-neutral-200 px-4 py-5">
       <h1 className="text-2xl font-semibold">Book This Car</h1>
       <p className="text-sm mt-1 text-neutral-500">
         Schedule your Pickup date and Return date

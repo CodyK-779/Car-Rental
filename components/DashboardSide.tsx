@@ -38,19 +38,21 @@ const DashboardSide = () => {
   const { data: session } = useSession();
   const pathname = usePathname();
 
-  if (!session) return;
+  // if (!session) return;
 
-  const fallbackAvatar = session.user.name.charAt(0).toUpperCase();
+  const fallbackAvatar = session?.user.name.charAt(0).toUpperCase();
 
   return (
     <div className="pt-8 border-2 md:min-w-[230px]">
       <div className="flex flex-col items-center justify-center pb-4 md:pb-0">
         <Avatar className="size-16 md:size-14">
-          <AvatarImage src={session.user.image!} />
-          <AvatarFallback>{fallbackAvatar}</AvatarFallback>
+          <AvatarImage src={session?.user.image!} />
+          <AvatarFallback className="bg-black text-white font-medium">
+            {fallbackAvatar}
+          </AvatarFallback>
         </Avatar>
         <p className="font-medium text-lg md:text-base text-center mt-2">
-          {session.user.name}
+          {session?.user.name}
         </p>
       </div>
       <div className="flex md:flex-col flex-row gap-2 mt-8 border-t-2 md:border-0">

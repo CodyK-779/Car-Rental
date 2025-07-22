@@ -117,6 +117,9 @@ export async function getCarDetails(carId: string) {
     const car = await prisma.car.findMany({
       where: {
         id: carId
+      },
+      include: {
+        user: true,
       }
     });
 
