@@ -1,6 +1,19 @@
+import { getUserStats } from "@/actions/user-action";
+import CustomerInfo from "@/components/CustomerInfo";
+import { auth } from "@/lib/auth";
 import { CarIcon, ClipboardListIcon, TriangleAlertIcon } from "lucide-react";
+import { headers } from "next/headers";
 
-export default function Dashboard() {
+export default async function Dashboard() {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  if (!session) return;
+
+  const userId = session.user.id;
+  const user = await getUserStats(userId);
+
   return (
     <div className="pt-10 px-8 w-full">
       <h1 className="text-3xl text-center md:text-start font-medium">
@@ -17,7 +30,7 @@ export default function Dashboard() {
           <div className="w-[180px] rounded-md flex items-center justify-between p-4 border border-neutral-400">
             <div className="flex flex-col">
               <p className="text-sm font-medium text-neutral-500">Total Cars</p>
-              <p className="text-lg font-semibold">0</p>
+              <p className="text-lg font-semibold">{user?.carCount}</p>
             </div>
             <div className="p-3 rounded-full bg-blue-100">
               <CarIcon className="size-5 text-blue-800" />
@@ -29,7 +42,7 @@ export default function Dashboard() {
               <p className="text-sm font-medium text-neutral-500">
                 Total Bookings
               </p>
-              <p className="text-lg font-semibold">0</p>
+              <p className="text-lg font-semibold">{user?.bookingCount}</p>
             </div>
             <div className="p-3 rounded-full bg-blue-100">
               <ClipboardListIcon className="size-5 text-blue-800" />
@@ -39,7 +52,7 @@ export default function Dashboard() {
           <div className="w-[180px] rounded-md flex items-center justify-between p-4 border border-neutral-400">
             <div className="flex flex-col">
               <p className="text-sm font-medium text-neutral-500">Pending</p>
-              <p className="text-lg font-semibold">0</p>
+              <p className="text-lg font-semibold">{user?.pendingCount}</p>
             </div>
             <div className="p-3 rounded-full bg-blue-100">
               <TriangleAlertIcon className="size-5 text-blue-800" />
@@ -49,7 +62,7 @@ export default function Dashboard() {
           <div className="w-[180px] rounded-md flex items-center justify-between p-4 border border-neutral-400">
             <div className="flex flex-col">
               <p className="text-sm font-medium text-neutral-500">Confirmed</p>
-              <p className="text-lg font-semibold">0</p>
+              <p className="text-lg font-semibold">{user?.confirmedCount}</p>
             </div>
             <div className="p-3 rounded-full bg-blue-100">
               <ClipboardListIcon className="size-5 text-blue-800" />
@@ -57,6 +70,7 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
+      <CustomerInfo ownerId={userId} />
     </div>
   );
 }

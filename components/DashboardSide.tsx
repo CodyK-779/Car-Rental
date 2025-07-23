@@ -10,6 +10,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { useState } from "react";
 
 const tabs = [
   {
@@ -36,9 +37,8 @@ const tabs = [
 
 const DashboardSide = () => {
   const { data: session } = useSession();
+  const [expanded, setExpanded] = useState(true);
   const pathname = usePathname();
-
-  // if (!session) return;
 
   const fallbackAvatar = session?.user.name.charAt(0).toUpperCase();
 

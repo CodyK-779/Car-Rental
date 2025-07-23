@@ -86,3 +86,30 @@ export async function updateBookingStatus(id: string, status: BookingStatus) {
     throw new Error("Failed to update booking status.")
   }
 }
+
+export async function getCustomerInfo(ownerId: string) {
+  try {
+    const session = await auth.api.getSession({
+      headers: await headers()
+    });
+
+    if (!session || session.user.id !== ownerId) return;
+
+    const bookings = await prisma.booking.findMany({
+      where: {
+        car: {
+          userId: ownerId,
+        },
+      },
+      include: {
+        user: true,
+        car: true
+      }
+    });
+
+    return bookings;
+  } catch (error) {
+    console.error("Failed to get customer info.", error);
+    throw new Error("Failed to get customer info.")
+  }
+}
