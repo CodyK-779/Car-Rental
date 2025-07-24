@@ -1,25 +1,39 @@
 "use client";
 
 import { FilterIcon, SearchIcon, XIcon } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import React, { useRef } from "react";
 
 const CarSearch = () => {
-  const [search, setSearch] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
+  const searchParams = useSearchParams();
   const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!search.trim()) return;
+    const query = inputRef.current?.value.trim() || "";
 
-    router.push(`/cars?search=${encodeURIComponent(search)}`);
+    const params = new URLSearchParams(searchParams.toString());
+
+    if (query) {
+      params.set("search", query);
+    } else {
+      params.delete("search");
+    }
+
+    router.push(`/cars?${params.toString()}`, { scroll: false });
   };
 
   const clearSearch = () => {
-    setSearch("");
-    router.push("/cars", { scroll: false });
+    const params = new URLSearchParams(searchParams.toString());
+    params.delete("search");
+    router.push(`/cars?${params.toString()}`, { scroll: false });
+
+    if (inputRef.current) inputRef.current.value = "";
   };
+
+  const selectedSearch = searchParams.get("search") || "";
 
   return (
     <div className="w-full pt-40 pb-20 bg-gray-100">
@@ -27,7 +41,7 @@ const CarSearch = () => {
         <h1 className="text-4xl sm:text-5xl font-semibold text-center">
           Browse Cars
         </h1>
-        <p className="mt-2 text-lg font-medium text-center text-neutral-500">
+        <p className="mt-2 text-lg font-medium text-center text-neutral-500 px-2">
           Browse our selection of available premium cars and search your desired
           car
         </p>
@@ -37,10 +51,10 @@ const CarSearch = () => {
         >
           <input
             type="search"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            ref={inputRef}
+            defaultValue={selectedSearch}
             enterKeyHint="search"
-            placeholder="Search by make, model, or features"
+            placeholder="Search by car brand or model"
             className="w-full flex items-center justify-center shadow rounded-full py-3 px-12 focus:outline-none"
           />
           <div className="absolute top-3.5 left-6 sm:left-4">
@@ -49,7 +63,7 @@ const CarSearch = () => {
           <div className="absolute top-3.5 right-7 sm:right-5">
             <FilterIcon className="size-5 text-neutral-500" />
           </div>
-          {search && (
+          {inputRef.current?.value && (
             <button
               type="button"
               onClick={clearSearch}
@@ -59,6 +73,9 @@ const CarSearch = () => {
             </button>
           )}
         </form>
+        <p className="text-xs text-neutral-500 font-medium text-center mt-4">
+          Clear the input field to cancel the filtering
+        </p>
       </div>
     </div>
   );

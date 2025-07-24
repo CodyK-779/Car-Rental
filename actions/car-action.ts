@@ -84,6 +84,29 @@ export async function getAllCars(take6?: boolean) {
   }
 }
 
+export async function getFilteredCars(search?: string, carType?: string) {
+  try {
+    const cars = await prisma.car.findMany({
+      where: {
+        AND: [
+          carType ? { type: carType as CarType } : {},
+          search ? {
+            OR: [
+              { brand: { contains: search, mode: "insensitive" } },
+              { model: { contains: search, mode: "insensitive" } }
+            ]
+          } : {},
+        ],
+      }, 
+    });
+
+    return cars;
+  } catch (error) {
+    console.error("Failed to get filtered cars.", error);
+    throw new Error("Failed to get filtered cars.");
+  }
+}
+
 export async function getManageCars() {
   try {
     const session = await auth.api.getSession({

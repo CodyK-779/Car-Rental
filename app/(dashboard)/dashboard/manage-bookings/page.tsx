@@ -33,58 +33,66 @@ export default async function ManageBookingsPage() {
       <p className="mt-2 text-center md:text-start text-neutral-500">
         Update the status of your bookings to cancel or confirm.
       </p>
-      <div className="border-2 rounded-md px-2 mt-6 overflow-x-auto">
-        <div className="min-w-[680px]">
-          <Table className="w-full">
-            <TableHeader>
-              <TableRow>
-                <TableHead>Car</TableHead>
-                <TableHead>Date Range</TableHead>
-                <TableHead>Total</TableHead>
-                <TableHead>Payment</TableHead>
-                <TableHead>Actions</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {bookings.map((b) => (
-                <TableRow key={b.id}>
-                  <TableCell>
-                    <div className="flex items-center gap-3">
-                      <Image
-                        src={b.car.img}
-                        alt="audi"
-                        width={60}
-                        height={60}
-                        className="rounded-md object-cover"
-                      />
-                      <p className="text-sm font-medium text-neutral-600">
-                        {b.car.model}
-                      </p>
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    <p className="text-sm font-medium text-neutral-500">
-                      {format(new Date(b.startDate), "dd-MM-yyyy")}{" "}
-                      <span className="mx-0.5">To</span>{" "}
-                      {format(new Date(b.endDate), "dd-MM-yyyy")}
-                    </p>
-                  </TableCell>
-                  <TableCell className="text-sm font-medium text-neutral-600">
-                    ${b.car.dailyPrice}
-                  </TableCell>
-                  <TableCell>
-                    <div className="w-fit px-3 py-0.5 text-center rounded-full text-sm font-medium text-neutral-500 bg-gray-100">
-                      offline
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    <ToggleBookingStatus id={b.id} status={b.status} />
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </div>
+      <div className="mt-6">
+        {bookings.length > 0 ? (
+          <div className="border-2 rounded-md px-2 overflow-x-auto">
+            <div className="min-w-[680px]">
+              <Table className="w-full">
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Car</TableHead>
+                    <TableHead>Date Range</TableHead>
+                    <TableHead>Total</TableHead>
+                    <TableHead>Payment</TableHead>
+                    <TableHead>Actions</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {bookings.map((b) => (
+                    <TableRow key={b.id}>
+                      <TableCell>
+                        <div className="flex items-center gap-3">
+                          <Image
+                            src={b.car.img}
+                            alt="audi"
+                            width={60}
+                            height={60}
+                            className="rounded-md object-cover"
+                          />
+                          <p className="text-sm font-medium text-neutral-600">
+                            {b.car.model}
+                          </p>
+                        </div>
+                      </TableCell>
+                      <TableCell>
+                        <p className="text-sm font-medium text-neutral-500">
+                          {format(new Date(b.startDate), "dd-MM-yyyy")}{" "}
+                          <span className="mx-0.5">To</span>{" "}
+                          {format(new Date(b.endDate), "dd-MM-yyyy")}
+                        </p>
+                      </TableCell>
+                      <TableCell className="text-sm font-medium text-neutral-600">
+                        ${b.car.dailyPrice}
+                      </TableCell>
+                      <TableCell>
+                        <div className="w-fit px-3 py-0.5 text-center rounded-full text-sm font-medium text-neutral-500 bg-gray-100">
+                          offline
+                        </div>
+                      </TableCell>
+                      <TableCell>
+                        <ToggleBookingStatus id={b.id} status={b.status} />
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+          </div>
+        ) : (
+          <p className="text-xl font-semibold text-center mt-20 text-neutral-500">
+            You haven't booked any cars yet.
+          </p>
+        )}
       </div>
     </div>
   );
