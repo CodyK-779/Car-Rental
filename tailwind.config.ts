@@ -1,4 +1,5 @@
 import { withUt } from "uploadthing/tw"
+const { colors: defaultColors } = require("tailwindcss/defaultTheme");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = withUt({
@@ -19,6 +20,7 @@ module.exports = withUt({
   			sm: 'calc(var(--radius) - 4px)'
   		},
   		colors: {
+				...defaultColors,
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

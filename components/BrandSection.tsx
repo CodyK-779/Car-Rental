@@ -19,7 +19,7 @@ const brands = [
 
 const BrandSection = () => {
   return (
-    <div className="mt-10">
+    <div className="mt-10" id="brand">
       <h1 className="text-2xl sm:text-4xl text-center px-2 font-bold">
         Explore our Premium Brands
       </h1>

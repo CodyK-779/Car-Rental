@@ -17,7 +17,11 @@ import { useState } from "react";
 import { signOut } from "@/lib/auth-client";
 import { toast } from "sonner";
 
-const SignOutButton = () => {
+interface Props {
+  width?: boolean;
+}
+
+const SignOutButton = ({ width }: Props) => {
   const [isPending, setIsPending] = useState(false);
 
   const handleClick = async () => {
@@ -38,7 +42,9 @@ const SignOutButton = () => {
     <AlertDialog>
       <AlertDialogTrigger asChild>
         <Button
-          className="font-medium bg-red-500 hover:bg-red-600 flex items-center text-white w-fit gap-2"
+          className={`font-medium bg-red-500 hover:bg-red-600 flex items-center text-white ${
+            width ? "w-full" : "w-fit"
+          } gap-2`}
           disabled={isPending}
         >
           {isPending ? (

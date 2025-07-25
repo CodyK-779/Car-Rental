@@ -49,9 +49,9 @@ const DashboardSide = ({ expanded, setExpanded }: Props) => {
 
   return (
     <div
-      className={`fixed top-0 left-0 md:h-screen pb-4 md:p-0 shadow md:shadow-none md:pt-28 pt-28 border-2 bg-white z-10 ${
+      className={`fixed top-0 left-0 md:h-screen pb-4 md:p-0 shadow md:shadow-none md:pt-28 pt-28 border-2 bg-white z-10 transition-transform duration-200 ease-in ${
         expanded ? "md:max-w-[230px]" : "md:w-fit"
-      } w-full transition-all duration-300 ease-in`}
+      } w-full`}
     >
       <div
         className={`hidden mb-6 md:flex ${

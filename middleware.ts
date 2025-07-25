@@ -13,7 +13,7 @@ export async function middleware(request: NextRequest) {
 
   const isLoggedIn = !!sessionCookie;
   const isOnProtectedRoute = protectedRoutes.some(route =>
-    pathname === route || pathname.startsWith(`/dashboard/`)
+    pathname === route || pathname.startsWith(`/dashboard/`) || pathname.startsWith(`/cars/`)
   );
 
   const isOnAuthRoute = authRoutes.some(route => pathname.startsWith(route));

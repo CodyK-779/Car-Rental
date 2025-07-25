@@ -34,7 +34,9 @@ const CarSection = async ({ search, carType }: Props) => {
                 />
                 <div className="absolute top-4 left-5">
                   <Badge className="rounded-full py-1 text-xs font-semibold bg-blue-500">
-                    {car.carStatus === "AVAILABLE" && "Available Now"}
+                    {car.carStatus === "AVAILABLE"
+                      ? "Available Now"
+                      : "Unavailable"}
                   </Badge>
                 </div>
               </div>

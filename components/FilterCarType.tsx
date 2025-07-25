@@ -46,7 +46,7 @@ const FilterCarType = ({ carType }: Props) => {
             key={ct.name}
             onClick={() => handleClick(ct.name)}
             className={`flex flex-col w-28 items-center gap-1.5 rounded-xl border-2 border-neutral-300 ${
-              carType === ct.name && "border-red-500"
+              carType === ct.name && "bg-purple-200"
             } shadow-md px-2 py-1.5 hover:-translate-y-1.5 hover:shadow-xl transition-all duration-150 ease-in cursor-pointer`}
           >
             <Image src={ct.img} alt={ct.name} width={30} height={30} />

@@ -2,8 +2,14 @@ import Image from "next/image";
 import React from "react";
 import { Button } from "./ui/button";
 import Link from "next/link";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
-const HeroSection = () => {
+const HeroSection = async () => {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
   return (
     <div className="relative sm:min-h-screen bg-neutral-200 pb-16 sm:pb-10 rounded-b-[40px]">
       <div className="flex flex-col items-center justify-center pt-40">
@@ -18,19 +24,19 @@ const HeroSection = () => {
         <div className="absolute max-[380px]:top-60 max-[450px]:top-52 top-48 sm:top-32">
           <Image src="/homeBg.png" alt="car bg" width={800} height={700} />
         </div>
-        <div className="max-[450px]:mt-[180px] mt-[200px] sm:mt-[300px]">
+        <div className="max-[450px]:mt-[180px] mt-[200px] sm:mt-[300px] z-10">
           <div className="flex items-center gap-4">
             <Button
               asChild
               className="rounded-full font-semibold sm:px-8 sm:py-5"
             >
-              <Link href="/">Start Booking</Link>
+              <Link href="#brand">Get Started</Link>
             </Button>
             <Button
               asChild
               className="rounded-full font-semibold sm:px-8 sm:py-5"
             >
-              <Link href="/">Add Listing</Link>
+              <Link href={session ? "/cars" : "/login"}>Start Booking</Link>
             </Button>
           </div>
         </div>
