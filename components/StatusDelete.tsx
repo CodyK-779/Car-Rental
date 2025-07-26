@@ -34,7 +34,7 @@ const StatusDelete = ({ carId, status }: Props) => {
       const results = await toggleStatus(carId);
       if (results?.success) {
         toast.success("Status updated successfully!");
-        router.push("/dashboard/manage-cars");
+        router.push("/dashboard/manage-cars", { scroll: false });
       }
     } catch (error) {
       toast.error("Failed to update status");
@@ -50,7 +50,7 @@ const StatusDelete = ({ carId, status }: Props) => {
       const results = await deleteCar(carId);
       if (!results?.success) {
         toast.success("Car listing deleted successfully!");
-        router.push("/dashboard/manage-cars");
+        router.push("/dashboard/manage-cars", { scroll: false });
       }
     } catch (error) {
       toast.error("Failed to delete car listing");

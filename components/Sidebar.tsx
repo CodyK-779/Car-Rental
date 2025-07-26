@@ -32,13 +32,16 @@ const Sidebar = ({ openMenu, setOpenMenu }: Props) => {
       >
         <i className="ri-close-large-fill text-2xl font-medium"></i>
       </div>
-      <Image
-        src={logo}
-        alt="Logo"
-        width={75}
-        height={75}
-        className="mt-0.5 ml-2"
-      />
+      <div className="flex items-center gap-1">
+        <Image
+          src={logo}
+          alt="Logo"
+          width={75}
+          height={75}
+          className="mt-0.5 ml-2"
+        />
+        <p className="text-lg font-semibold mt-2">Car Rental</p>
+      </div>
       <ul className="flex flex-col items-center justify-center mt-24 gap-10">
         {navLinks.map((link) => (
           <li

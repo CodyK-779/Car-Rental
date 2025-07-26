@@ -22,7 +22,7 @@ export async function createBooking(userId: string, carId: string, startDate: Da
     });
 
     if (existingBooking) {
-      return { error: "This Car booking already exist." }
+      return { error: "You already booked this car." }
     }
 
     await prisma.booking.create({
@@ -71,16 +71,31 @@ export async function updateBookingStatus(id: string, status: BookingStatus) {
   try {
     if (!id) return { success: false, message: "Missing booking ID" };
 
-    await prisma.booking.update({
-      where: {
-        id
-      },
-      data: {
-        status
-      }
+    const booking = await prisma.booking.findUnique({
+      where: { id },
+      select: { carId: true }
     });
 
-    return { success: true };
+    if (!booking?.carId) return { success: false, message: "Booking not found or missing car." };
+
+    const carStatus = status === "Confirmed" ? "UNAVAILABLE" : "AVAILABLE";
+
+    await prisma.$transaction([
+      prisma.booking.update({
+        where: { id },
+        data: {
+          status
+        }
+      }),
+      prisma.car.update({
+        where: { id: booking.carId },
+        data: {
+          carStatus
+        }
+      })
+    ]);
+
+    return { success: true }
   } catch (error) {
     console.error("Failed to update booking status.", error);
     throw new Error("Failed to update booking status.")

@@ -143,6 +143,15 @@ export async function getCarDetails(carId: string) {
       },
       include: {
         user: true,
+        booking: {
+          include: {
+            user: {
+              select: {
+                name: true
+              }
+            }
+          }
+        }
       }
     });
 

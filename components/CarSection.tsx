@@ -33,7 +33,13 @@ const CarSection = async ({ search, carType }: Props) => {
                   className="object-cover transition-transform duration-300 ease-in group-hover:scale-105"
                 />
                 <div className="absolute top-4 left-5">
-                  <Badge className="rounded-full py-1 text-xs font-semibold bg-blue-500">
+                  <Badge
+                    className={`rounded-full py-1 text-xs font-semibold ${
+                      car.carStatus === "AVAILABLE"
+                        ? "bg-blue-500"
+                        : "bg-red-500"
+                    }`}
+                  >
                     {car.carStatus === "AVAILABLE"
                       ? "Available Now"
                       : "Unavailable"}

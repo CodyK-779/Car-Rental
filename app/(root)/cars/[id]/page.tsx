@@ -24,6 +24,26 @@ export default async function CarDetailPage({
 
   return (
     <section className="max-w-6xl mx-auto px-4 pt-32 pb-8">
+      {carDetails.map((car) => {
+        if (car.carStatus === "UNAVAILABLE") {
+          const confirmedBooking = car.booking.find(
+            (b) => b.status === "Confirmed"
+          );
+
+          return (
+            <p
+              key={car.id}
+              className="text-2xl font-bold text-center text-red-500 -mt-6 mb-10"
+            >
+              {confirmedBooking
+                ? `This car is currently booked by ${confirmedBooking.user.name}`
+                : "This car is currently unavailable to book"}
+            </p>
+          );
+        }
+
+        return null;
+      })}
       <Button asChild className="mb-8">
         <Link href="/cars" className="flex items-center gap-2">
           <ArrowLeftIcon />
@@ -80,7 +100,13 @@ export default async function CarDetailPage({
                 </div>
                 <div>
                   <strong>Status:</strong>{" "}
-                  <span className="text-green-600 font-medium">
+                  <span
+                    className={`font-medium ${
+                      car.carStatus === "AVAILABLE"
+                        ? "text-green-600"
+                        : "text-red-500"
+                    }`}
+                  >
                     {car.carStatus}
                   </span>
                 </div>
@@ -123,7 +149,11 @@ export default async function CarDetailPage({
             </div>
           </div>
 
-          <CreateBooking carId={car.id} ownerId={car.userId} />
+          <CreateBooking
+            carId={car.id}
+            ownerId={car.userId}
+            status={car.carStatus}
+          />
         </div>
       ))}
     </section>

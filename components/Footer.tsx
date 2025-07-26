@@ -78,7 +78,7 @@ const Footer = () => {
           </ul>
         </div>
         {/* Fifth Row */}
-        <div className="flex flex-col items-start pt-4 md:pt-8 gap-4">
+        <div className="flex flex-col items-start pt-3 md:pt-8 gap-4">
           <h1 className="text-2xl font-bold">Follow our socials</h1>
           <p className="font-medium text-neutral-600">
             By following our socials you can stay up to date on new available

@@ -11,13 +11,15 @@ import { useSession } from "@/lib/auth-client";
 import { createBooking } from "@/actions/booking-action";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { CarStatus } from "@/lib/generated/prisma";
 
 interface Props {
   carId: string;
   ownerId: string;
+  status: CarStatus;
 }
 
-const CreateBooking = ({ carId, ownerId }: Props) => {
+const CreateBooking = ({ carId, ownerId, status }: Props) => {
   const [startDate, setStartDate] = useState<Date | undefined>(undefined);
   const [endDate, setEndDate] = useState<Date | undefined>(undefined);
   const [isPending, setIsPending] = useState(false);
@@ -42,13 +44,21 @@ const CreateBooking = ({ carId, ownerId }: Props) => {
         return;
       }
 
+      if (status === "UNAVAILABLE") {
+        toast.error("This car is currently unavailable to book.");
+        setIsPending(false);
+        setStartDate(undefined);
+        setEndDate(undefined);
+        return;
+      }
+
       const results = await createBooking(userId!, carId, startDate, endDate);
 
       if (results?.success) {
         toast.success("Booking created successfully!");
         router.push("/bookings");
       } else {
-        toast.error("This booking already exist.");
+        toast.error("You already booked this car.");
       }
     } catch (error) {
       toast.error("Failed to book this car.");
