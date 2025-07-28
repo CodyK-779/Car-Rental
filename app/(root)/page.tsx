@@ -4,6 +4,7 @@ import FeaturedCars from "@/components/FeaturedCars";
 import Hero2Section from "@/components/Hero2Section";
 import HeroSection from "@/components/HeroSection";
 import HowItWork from "@/components/HowItWork";
+import Testimonials from "@/components/Testimonials";
 
 export default async function Home() {
   return (
@@ -14,6 +15,7 @@ export default async function Home() {
       <HowItWork />
       <Benefits />
       <Hero2Section />
+      <Testimonials />
     </>
   );
 }

@@ -14,7 +14,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
       <Navbar openMenu={openMenu} setOpenMenu={setOpenMenu} />
       {openMenu && <Overlay setOpenMenu={setOpenMenu} />}
       <Sidebar openMenu={openMenu} setOpenMenu={setOpenMenu} />
-      <main className="pb-20">{children}</main>
+      <main>{children}</main>
       <Footer />
     </div>
   );
