@@ -2,26 +2,15 @@
 
 import * as React from "react";
 import {
-  AudioWaveform,
-  BookOpen,
-  Bot,
-  Command,
-  Frame,
-  GalleryVerticalEnd,
-  Map,
-  PieChart,
-  Settings2,
-  SquareTerminal,
+  CarIcon,
+  ClipboardListIcon,
+  LayoutDashboardIcon,
+  PlusSquareIcon,
 } from "lucide-react";
 
-import { NavMain } from "@/components/nav-main";
-import { NavProjects } from "@/components/nav-projects";
-import { NavUser } from "@/components/nav-user";
-import { TeamSwitcher } from "@/components/team-switcher";
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarHeader,
   SidebarRail,
   SidebarTrigger,
@@ -29,140 +18,36 @@ import {
 } from "@/components/ui/sidebar";
 import { useSession } from "@/lib/auth-client";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-// This is sample data.
-const data = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
+const tabs = [
+  {
+    title: "Dashboard",
+    link: "/dashboard",
+    icon: <LayoutDashboardIcon className="size-5" />,
   },
-  teams: [
-    {
-      name: "Acme Inc",
-      logo: GalleryVerticalEnd,
-      plan: "Enterprise",
-    },
-    {
-      name: "Acme Corp.",
-      logo: AudioWaveform,
-      plan: "Startup",
-    },
-    {
-      name: "Evil Corp.",
-      logo: Command,
-      plan: "Free",
-    },
-  ],
-  navMain: [
-    {
-      title: "Playground",
-      url: "#",
-      icon: SquareTerminal,
-      isActive: true,
-      items: [
-        {
-          title: "History",
-          url: "#",
-        },
-        {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Models",
-      url: "#",
-      icon: Bot,
-      items: [
-        {
-          title: "Genesis",
-          url: "#",
-        },
-        {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Documentation",
-      url: "#",
-      icon: BookOpen,
-      items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
-        },
-      ],
-    },
-  ],
-  projects: [
-    {
-      name: "Design Engineering",
-      url: "#",
-      icon: Frame,
-    },
-    {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: PieChart,
-    },
-    {
-      name: "Travel",
-      url: "#",
-      icon: Map,
-    },
-  ],
-};
+  {
+    title: "Add Car",
+    link: "/dashboard/add-car",
+    icon: <PlusSquareIcon className="size-5" />,
+  },
+  {
+    title: "Manage Cars",
+    link: "/dashboard/manage-cars",
+    icon: <CarIcon className="size-5" />,
+  },
+  {
+    title: "Manage Bookings",
+    link: "/dashboard/manage-bookings",
+    icon: <ClipboardListIcon className="size-5" />,
+  },
+];
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { data: session } = useSession();
   const { open, isMobile } = useSidebar();
+  const pathname = usePathname();
 
   if (!session) return null;
 
@@ -172,63 +57,52 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarTrigger />
       </div>
       <SidebarHeader>
-        <TeamSwitcher teams={data.teams} />
+        {/* <TeamSwitcher teams={data.teams} /> */}
+        <div className="flex items-center gap-2 mt-4">
+          <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+            {/* <activeTeam.logo className="size-4" /> */}
+            <Avatar>
+              <AvatarImage src={session?.user.image!} />
+              <AvatarFallback className="text-white bg-black">
+                {session?.user.name.charAt(0).toUpperCase()}
+              </AvatarFallback>
+            </Avatar>
+          </div>
+          <div className="grid flex-1 text-left text-sm leading-tight ml-1">
+            <span className="truncate font-semibold">{session?.user.name}</span>
+            <span className="truncate text-xs font-medium text-neutral-500">
+              {session?.user.email}
+            </span>
+          </div>
+        </div>
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
+        <div className="flex flex-col gap-6 mt-8 pl-3">
+          {tabs.map((tab) => {
+            const isActive = pathname === tab.link;
+
+            return (
+              <Link
+                key={tab.link}
+                href={tab.link}
+                className="flex items-center gap-2"
+              >
+                <div className={`${isActive && !open && "md:text-blue-700"}`}>
+                  {tab.icon}
+                </div>
+                <p
+                  className={`${!open && "md:hidden"} font-medium ${
+                    isActive && "text-blue-700"
+                  } transition-colors duration-150 ease-in`}
+                >
+                  {tab.title}
+                </p>
+              </Link>
+            );
+          })}
+        </div>
       </SidebarContent>
-      <SidebarFooter>
-        <NavUser user={data.user} />
-      </SidebarFooter>
       <SidebarRail />
     </Sidebar>
   );
 }
-
-/*
-
-*/
-
-/*
-<SidebarHeader>
-  <div className="flex flex-col items-center justify-center mt-10">
-    <Avatar
-      className={`${
-        open && "md:size-14 transition-all duration-300 ease-in"
-      }`}
-    >
-      <AvatarImage src={session.user.image!} />
-      <AvatarFallback className="text-white bg-black">
-        {session.user.name.charAt(0).toUpperCase()}
-      </AvatarFallback>
-    </Avatar>
-  </div>
-  {/* <div
-    className={`flex items-center ${
-      open ? "justify-start" : "md:justify-center"
-    } mt-8`}
-  >
-    <div className="flex items-center gap-2">
-      <Avatar>
-        <AvatarImage src={session.user.image!} />
-        <AvatarFallback className="text-white bg-black">
-          {session.user.name.charAt(0).toUpperCase()}
-        </AvatarFallback>
-      </Avatar>
-      <div className="flex flex-col">
-        <p className={`text-sm font-bold ${!open && "md:hidden"}`}>
-          {session.user.name}
-        </p>
-        <p
-          className={`text-[13px] font-medium text-neutral-600 ${
-            !open && "md:hidden"
-          }`}
-        >
-          {session.user.email}
-        </p>
-      </div>
-    </div>
-  </div>
-</SidebarHeader>
-*/

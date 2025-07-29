@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Button } from "./ui/button";
 import { useSession } from "@/lib/auth-client";
 import SignOutButton from "./SignOutButton";
+import { usePathname } from "next/navigation";
 
 interface Props {
   openMenu: boolean;
@@ -21,6 +22,7 @@ export const navLinks = [
 
 const Navbar = ({ openMenu, setOpenMenu }: Props) => {
   const { data: session } = useSession();
+  const pathname = usePathname();
 
   return (
     <nav className="fixed top-0 py-1 z-20 w-full border-b border-neutral-200 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -30,15 +32,22 @@ const Navbar = ({ openMenu, setOpenMenu }: Props) => {
           <p className="text-2xl font-bold">Car Rental</p>
         </Link>
         <ul className="hidden lg:flex items-center text-lg font-medium gap-10">
-          {navLinks.map((link) => (
-            <Link
-              key={link.link}
-              href={link.link}
-              className="font-semibold transition-colors duration-150 ease-in hover:text-red-500"
-            >
-              {link.title}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive =
+              pathname === link.link || pathname.startsWith(link.link + "/");
+
+            return (
+              <Link
+                key={link.link}
+                href={link.link}
+                className={`font-semibold transition-colors duration-150 ease-in hover:text-blue-600 ${
+                  isActive && "text-blue-600"
+                }`}
+              >
+                {link.title}
+              </Link>
+            );
+          })}
         </ul>
         <div className="hidden lg:flex items-center gap-4">
           {!session ? (

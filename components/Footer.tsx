@@ -42,7 +42,7 @@ const Footer = () => {
             {navLinks.map((link) => (
               <li
                 key={link.link}
-                className="font-semibold text-neutral-600 hover:text-red-500 duration-150 transition-colors ease-in"
+                className="font-semibold text-neutral-600 hover:text-blue-700 duration-150 transition-colors ease-in"
               >
                 <Link href={link.link}>{link.title}</Link>
               </li>
@@ -56,7 +56,7 @@ const Footer = () => {
             {brands1.map((brand) => (
               <li
                 key={brand.link}
-                className="font-semibold text-neutral-600 hover:text-red-500 duration-150 transition-colors ease-in"
+                className="font-semibold text-neutral-600 hover:text-blue-700 duration-150 transition-colors ease-in"
               >
                 <Link href={brand.link}>{brand.name}</Link>
               </li>
@@ -70,7 +70,7 @@ const Footer = () => {
             {brands2.map((brand) => (
               <li
                 key={brand.link}
-                className="font-semibold text-neutral-600 hover:text-red-500 duration-150 transition-colors ease-in"
+                className="font-semibold text-neutral-600 hover:text-blue-700 duration-150 transition-colors ease-in"
               >
                 <Link href={brand.link}>{brand.name}</Link>
               </li>

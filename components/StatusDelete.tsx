@@ -33,7 +33,9 @@ const StatusDelete = ({ carId, status }: Props) => {
     try {
       const results = await toggleStatus(carId);
       if (results?.success) {
-        toast.success("Status updated successfully!");
+        toast.success("Status updated successfully!", {
+          position: "top-right",
+        });
         router.push("/dashboard/manage-cars", { scroll: false });
       }
     } catch (error) {

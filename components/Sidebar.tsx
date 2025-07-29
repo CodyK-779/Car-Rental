@@ -8,17 +8,19 @@ import { useSession } from "@/lib/auth-client";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Button } from "./ui/button";
 import SignOutButton from "./SignOutButton";
+import { usePathname } from "next/navigation";
 
 interface Props {
   openMenu: boolean;
   setOpenMenu: (openMenu: boolean) => void;
 }
-
+//
 const sidebarStyles =
   "lg:hidden fixed top-0 right-0 rounded-md z-30 min-h-screen w-[350px] max-[450px]:w-full max-[450px]:bg-white/60 max-[450px]:backdrop-blur-lg bg-neutral-100 shadow transition-transform duration-200 ease-in";
 
 const Sidebar = ({ openMenu, setOpenMenu }: Props) => {
   const { data: session } = useSession();
+  const pathname = usePathname();
 
   return (
     <div
@@ -43,17 +45,23 @@ const Sidebar = ({ openMenu, setOpenMenu }: Props) => {
         <p className="text-lg font-semibold mt-2">Car Rental</p>
       </div>
       <ul className="flex flex-col items-center justify-center mt-24 gap-10">
-        {navLinks.map((link) => (
-          <li
-            key={link.link}
-            onClick={() => setOpenMenu(false)}
-            className="text-xl font-semibold hover:text-red-500 transition-colors duration-200 ease-in"
-          >
-            <Link href={link.link}>{link.title}</Link>
-          </li>
-        ))}
+        {navLinks.map((link) => {
+          const isActive =
+            pathname === link.link || pathname.startsWith(link.link + "/");
+
+          return (
+            <li
+              key={link.link}
+              onClick={() => setOpenMenu(false)}
+              className={`text-xl font-semibold ${
+                isActive && "text-blue-600"
+              } hover:text-blue-600 transition-colors duration-200 ease-in`}
+            >
+              <Link href={link.link}>{link.title}</Link>
+            </li>
+          );
+        })}
       </ul>
-      {/* <p className="text-xl font-bold mt-7 ml-4">Car Rental</p> */}
       <div className="mt-16 mx-3">
         {session ? (
           <div className="flex flex-col">

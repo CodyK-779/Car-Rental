@@ -26,7 +26,7 @@ export default async function ManageBookingsPage() {
   if (!bookings) return null;
 
   return (
-    <div className="pt-10 px-3 md:px-8 w-full">
+    <div className="pt-10 px-3 md:px-8 w-full overflow-hidden">
       <h1 className="text-3xl text-center md:text-start font-semibold">
         Manage Bookings
       </h1>

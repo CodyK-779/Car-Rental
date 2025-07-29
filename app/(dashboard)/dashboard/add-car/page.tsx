@@ -140,9 +140,9 @@ export default function AddCarPage() {
         Fill in details to list a new car for booking, including pricing,
         availability, and car specifications.
       </p>
-      <div className="max-w-4xl mt-16 md:mt-8">
+      <div className="max-w-4xl mt-16 md:mt-8 w-full px-1 overflow-hidden">
         {/* First Row */}
-        <div className="w-full flex items-center gap-3 md:gap-6">
+        <div className="w-full flex items-center gap-3">
           <div className="flex flex-col gap-1.5 w-full">
             <Label htmlFor="brand" className="text-neutral-500">
               Brand
@@ -169,7 +169,7 @@ export default function AddCarPage() {
           </div>
         </div>
         {/* Second Row */}
-        <div className="w-full flex items-center gap-3 md:gap-6 mt-6">
+        <div className="w-full flex items-center gap-3 mt-6">
           <div className="flex flex-col gap-1.5 w-full">
             <Label htmlFor="year">Year</Label>
             <Input
@@ -211,7 +211,7 @@ export default function AddCarPage() {
           </div>
         </div>
         {/* Third Row */}
-        <div className="flex items-center gap-3 md:gap-6 mt-6">
+        <div className="flex flex-col md:flex-row items-center gap-3 mt-6">
           <div className="flex flex-col gap-1.5 w-full">
             <Label htmlFor="transmission">Transmission</Label>
             <Select
@@ -232,53 +232,55 @@ export default function AddCarPage() {
               </SelectContent>
             </Select>
           </div>
-          <div className="flex flex-col gap-1.5 w-full">
-            <Label htmlFor="fuelType">Fuel Type</Label>
-            <Select
-              value={fuelType}
-              onValueChange={(value: FuelType) => setFuelType(value)}
-            >
-              <SelectTrigger className="outline-none border-2 border-neutral-300">
-                <SelectValue placeholder="Select a fuel type" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectItem value="Gas">Gas</SelectItem>
-                  <SelectItem value="Diesel">Diesel</SelectItem>
-                  <SelectItem value="Petrol">Petrol</SelectItem>
-                  <SelectItem value="Electric">Electric</SelectItem>
-                  <SelectItem value="Hybrid">Hybrid</SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="flex flex-col gap-1.5 w-full">
-            <Label htmlFor="category">Category</Label>
-            <Select
-              value={category}
-              onValueChange={(value: CarType) => setCategory(value)}
-            >
-              <SelectTrigger className="outline-none border-2 border-neutral-300">
-                <SelectValue placeholder="Select a category" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectItem value="SUV">SUV</SelectItem>
-                  <SelectItem value="Sedan">Sedan</SelectItem>
-                  <SelectItem value="Hatchback">Hatchback</SelectItem>
-                  <SelectItem value="Electric">Electric</SelectItem>
-                  <SelectItem value="Convertible">Convertible</SelectItem>
-                  <SelectItem value="Hybrid">Hybrid</SelectItem>
-                  <SelectItem value="Coupe">Coupe</SelectItem>
-                  <SelectItem value="Van">Van</SelectItem>
-                  <SelectItem value="Truck">Truck</SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
+          <div className="flex items-center w-full gap-2">
+            <div className="flex flex-col gap-1.5 w-full">
+              <Label htmlFor="fuelType">Fuel Type</Label>
+              <Select
+                value={fuelType}
+                onValueChange={(value: FuelType) => setFuelType(value)}
+              >
+                <SelectTrigger className="outline-none border-2 border-neutral-300">
+                  <SelectValue placeholder="Select a fuel type" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectItem value="Gas">Gas</SelectItem>
+                    <SelectItem value="Diesel">Diesel</SelectItem>
+                    <SelectItem value="Petrol">Petrol</SelectItem>
+                    <SelectItem value="Electric">Electric</SelectItem>
+                    <SelectItem value="Hybrid">Hybrid</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="flex flex-col gap-1.5 w-full">
+              <Label htmlFor="category">Category</Label>
+              <Select
+                value={category}
+                onValueChange={(value: CarType) => setCategory(value)}
+              >
+                <SelectTrigger className="outline-none border-2 border-neutral-300">
+                  <SelectValue placeholder="Select a category" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectItem value="SUV">SUV</SelectItem>
+                    <SelectItem value="Sedan">Sedan</SelectItem>
+                    <SelectItem value="Hatchback">Hatchback</SelectItem>
+                    <SelectItem value="Electric">Electric</SelectItem>
+                    <SelectItem value="Convertible">Convertible</SelectItem>
+                    <SelectItem value="Hybrid">Hybrid</SelectItem>
+                    <SelectItem value="Coupe">Coupe</SelectItem>
+                    <SelectItem value="Van">Van</SelectItem>
+                    <SelectItem value="Truck">Truck</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </div>
           </div>
         </div>
         {/* Fourth Row */}
-        <div className="flex items-center gap-3 md:gap-6 mt-6">
+        <div className="flex items-center gap-3 mt-6">
           <div className="flex flex-col gap-1.5 w-full">
             <Label htmlFor="location">Location</Label>
             <Select

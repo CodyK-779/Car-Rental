@@ -1,30 +1,29 @@
 "use client";
 
-import DashboardSide from "@/components/DashboardSide";
+import { AppSidebar } from "@/components/app-sidebar";
 import Navbar from "@/components/Navbar";
 import Overlay from "@/components/Overlay";
 import Sidebar from "@/components/Sidebar";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { PropsWithChildren, useState } from "react";
 
-export default function DashboardLayout({ children }: PropsWithChildren) {
+export default function Dashboard2Layout({ children }: PropsWithChildren) {
   const [openMenu, setOpenMenu] = useState(false);
-  const [expanded, setExpanded] = useState(true);
 
   return (
-    <div>
+    <>
       <Navbar openMenu={openMenu} setOpenMenu={setOpenMenu} />
       {openMenu && <Overlay setOpenMenu={setOpenMenu} />}
       <Sidebar openMenu={openMenu} setOpenMenu={setOpenMenu} />
-      <div className="pt-[78px] flex flex-col md:flex-row min-h-screen overflow-hidden">
-        <DashboardSide expanded={expanded} setExpanded={setExpanded} />
-        <main
-          className={`pb-20 pt-64 md:pt-0 ${
-            expanded ? "md:ml-[230px]" : "md:ml-[70px]"
-          }`}
-        >
+      <SidebarProvider>
+        <AppSidebar />
+        <main className="mt-20 pb-20 overflow-hidden" suppressHydrationWarning>
+          <div className="md:hidden">
+            <SidebarTrigger />
+          </div>
           {children}
         </main>
-      </div>
-    </div>
+      </SidebarProvider>
+    </>
   );
 }

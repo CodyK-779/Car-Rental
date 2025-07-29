@@ -29,7 +29,9 @@ const ToggleBookingStatus = ({ id, status }: Props) => {
       const result = await updateBookingStatus(id, status);
 
       if (result?.success) {
-        toast.success("Status updated successfully!");
+        toast.success("Status updated successfully!", {
+          position: "top-right",
+        });
         router.push("/dashboard/manage-bookings", { scroll: false });
       }
     } catch (error) {
