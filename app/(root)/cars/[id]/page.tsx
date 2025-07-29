@@ -2,6 +2,7 @@ import { getCarDetails } from "@/actions/car-action";
 import CreateBooking from "@/components/CreateBooking";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import GradientText from "@/components/ui/GradientText/GradientText";
 import { format } from "date-fns";
 import { ArrowLeftIcon } from "lucide-react";
 import Image from "next/image";
@@ -31,14 +32,28 @@ export default async function CarDetailPage({
           );
 
           return (
-            <p
-              key={car.id}
-              className="text-2xl font-bold text-center text-red-500 -mt-6 mb-10"
-            >
-              {confirmedBooking
-                ? `This car is currently booked by ${confirmedBooking.user.name}`
-                : "This car is currently unavailable to book"}
-            </p>
+            // <p
+            //   key={car.id}
+            //   className="text-2xl font-bold text-center text-red-500 -mt-6 mb-10"
+            // >
+            //   {confirmedBooking
+            //     ? `This car is currently booked by ${confirmedBooking.user.name}`
+            //     : "This car is currently unavailable to book"}
+            // </p>
+            <div key={car.id} className="flex items-center justify-center">
+              {confirmedBooking ? (
+                <div className="flex items-center text-2xl font-bold -mt-6 mb-10">
+                  <p className="mr-1.5">This car is currently booked by</p>
+                  <GradientText className="font-extrabold">
+                    {confirmedBooking.user.name}
+                  </GradientText>
+                </div>
+              ) : (
+                <p className="text-2xl font-bold text-center text-red-500 -mt-6 mb-10">
+                  This car is currently unavailable to book
+                </p>
+              )}
+            </div>
           );
         }
 
@@ -57,7 +72,6 @@ export default async function CarDetailPage({
           className="flex flex-col md:flex-row items-start gap-6"
         >
           <div className="flex flex-col gap-8">
-            {/* <!-- Image --> */}
             <div className="relative w-full rounded-lg overflow-hidden border-2 border-neutral-400">
               <Image
                 src={car.img}
@@ -73,7 +87,7 @@ export default async function CarDetailPage({
 
             <div className="w-full space-y-4">
               <h2 className="text-3xl font-bold text-gray-900">{car.model}</h2>
-              <p className="text-gray-600 text-sm">
+              <p className="text-sm font-medium text-gray-600">
                 Posted in <span className="font-medium">{car.location}</span>
               </p>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm text-gray-700">

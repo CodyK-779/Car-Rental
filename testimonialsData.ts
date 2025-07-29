@@ -35,9 +35,9 @@ export const testimonials = [
     stars: 4
   },
   {
-    img: "/leon.webp",
-    name: "Leon Kennedy",
-    email: "@leon",
+    img: "/tom.avif",
+    name: "Tom Holland",
+    email: "@tom",
     review: "Had a great time driving around the city. Very satisfied!",
     stars: 5
   },
@@ -74,7 +74,7 @@ export const testimonials = [
     name: "Billie Eillish",
     email: "@billie",
     review: "Simple booking, fair prices, and clean cars. Loved it!",
-    stars: 4
+    stars: 5
   },
   {
     img: "/rock.jpg",

@@ -1,5 +1,6 @@
 import Benefits from "@/components/Benefits";
 import BrandSection from "@/components/BrandSection";
+import Contact from "@/components/Contact";
 import FeaturedCars from "@/components/FeaturedCars";
 import Hero2Section from "@/components/Hero2Section";
 import HeroSection from "@/components/HeroSection";
@@ -16,6 +17,7 @@ export default async function Home() {
       <Benefits />
       <Hero2Section />
       <Testimonials />
+      <Contact />
     </>
   );
 }

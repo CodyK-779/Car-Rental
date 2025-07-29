@@ -27,7 +27,7 @@ export default async function BookingsPage() {
   };
 
   return (
-    <section className="mt-32 max-w-4xl w-full mx-auto px-4">
+    <section className="mt-32 pb-20 max-w-4xl w-full mx-auto px-4">
       <h1 className="text-5xl font-semibold text-center mb-3">My Bookings</h1>
       <p className="text-center font-medium text-neutral-500">
         These are all the Bookings that you've made. You can either{" "}

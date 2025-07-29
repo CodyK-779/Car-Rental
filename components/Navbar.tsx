@@ -23,7 +23,7 @@ const Navbar = ({ openMenu, setOpenMenu }: Props) => {
   const { data: session } = useSession();
 
   return (
-    <nav className="fixed top-0 py-1 z-20 w-full border-b border-neutral-200 backdrop-blur">
+    <nav className="fixed top-0 py-1 z-20 w-full border-b border-neutral-200 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="max-w-7xl mx-auto px-2 flex items-center justify-between gap-2">
         <Link href="/" className="flex items-center gap-2">
           <Image src={logo} alt="logo" width={70} height={70} />

@@ -16,7 +16,7 @@ const thirdRow = testimonials.slice(testimonials.length / 2);
 
 const ReviewCard = ({ name, email, img, review, stars }: Props) => {
   return (
-    <div className="relative h-full w-fit cursor-pointer overflow-hidden rounded-xl border-2 p-4 border-neutral-300 hover:bg-gray-950/[.05]">
+    <div className="relative h-full w-fit cursor-pointer overflow-hidden rounded-xl border-2 p-4 bg-white border-neutral-300 hover:shadow-xl transition duration-150 ease-in">
       <div className="flex items-start justify-between">
         <div className="flex items-center gap-2">
           <Image
