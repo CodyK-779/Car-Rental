@@ -2,10 +2,11 @@
 
 import { FilterIcon, SearchIcon, XIcon } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 const CarSearch = () => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const [search, setSearch] = useState("");
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -20,6 +21,7 @@ const CarSearch = () => {
       params.set("search", query);
     } else {
       params.delete("search");
+      setSearch("");
     }
 
     router.push(`/cars?${params.toString()}`, { scroll: false });
@@ -31,6 +33,7 @@ const CarSearch = () => {
     router.push(`/cars?${params.toString()}`, { scroll: false });
 
     if (inputRef.current) inputRef.current.value = "";
+    setSearch("");
   };
 
   const selectedSearch = searchParams.get("search") || "";
@@ -50,9 +53,9 @@ const CarSearch = () => {
           className="relative mt-8 w-full px-2 sm:px-0"
         >
           <input
-            type="search"
             ref={inputRef}
             defaultValue={selectedSearch}
+            onChange={(e) => setSearch(e.target.value)}
             enterKeyHint="search"
             placeholder="Search by car brand or model"
             className="w-full flex items-center justify-center shadow rounded-full py-3 px-12 focus:outline-none"
@@ -63,7 +66,7 @@ const CarSearch = () => {
           <div className="absolute top-3.5 right-7 sm:right-5">
             <FilterIcon className="size-5 text-neutral-500" />
           </div>
-          {inputRef.current?.value && (
+          {search && (
             <button
               type="button"
               onClick={clearSearch}

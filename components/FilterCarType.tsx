@@ -40,7 +40,7 @@ const FilterCarType = ({ carType }: Props) => {
   return (
     <section className="container mt-6">
       <h1 className="text-3xl font-bold text-center">Browse By Body Type</h1>
-      <div className="flex items-center justify-center flex-wrap gap-4 mt-6">
+      <div className="flex items-center justify-center flex-wrap gap-4 mt-8">
         {carTypes.map((ct) => (
           <div
             key={ct.name}
