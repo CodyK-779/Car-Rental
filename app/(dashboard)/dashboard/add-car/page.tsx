@@ -118,11 +118,15 @@ export default function AddCarPage() {
       );
 
       if (results?.success) {
-        toast.success("Car listing created successfully!");
+        toast.success("Car listing created successfully!", {
+          position: "top-right",
+        });
         resetForm();
         router.push("/dashboard/add-car", { scroll: false });
       } else {
-        toast.error("This car listing already exists.");
+        toast.error("This car listing already exists.", {
+          position: "top-right",
+        });
       }
     } catch (error) {
       toast.error("Failed to create car listing");

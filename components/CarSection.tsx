@@ -4,21 +4,44 @@ import { Badge } from "./ui/badge";
 import { MapPin } from "lucide-react";
 import Link from "next/link";
 import { FilterDate } from "./FilterStatus";
+import PaginationControls from "./PaginationControls";
 
 interface Props {
   search: string;
   carType: string;
   status: string;
   filter: FilterDate;
+  // page: number;
+  // per_page: number;
+  start: number;
+  end: number;
 }
 
-const CarSection = async ({ search, carType, status, filter }: Props) => {
-  const cars = await getFilteredCars(search, carType, status, filter);
+const CarSection = async ({
+  search,
+  carType,
+  status,
+  filter,
+  start,
+  end,
+}: // page,
+// per_page,
+Props) => {
+  const carData = await getFilteredCars(
+    // page,
+    // per_page,
+    search,
+    carType,
+    status,
+    filter
+  );
 
-  if (!cars) return null;
+  if (!carData) return null;
+
+  const cars = carData.slice(start, end);
 
   return (
-    <div className="container mt-20 pb-28">
+    <div className="container mt-20 pb-16">
       {cars.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {cars.map((car) => (
@@ -98,6 +121,13 @@ const CarSection = async ({ search, carType, status, filter }: Props) => {
           Sorry the car that you're looking for is not available{" "}
           <span className="ml-0.5">{":'("}</span>
         </p>
+      )}
+      {carData.length > 6 && (
+        <PaginationControls
+          hasNextPage={end < carData.length}
+          hasPreviousPage={start > 0}
+          totalCars={carData.length}
+        />
       )}
     </div>
   );
