@@ -1,7 +1,8 @@
 "use server";
 
+import { FilterDate } from "@/components/FilterStatus";
 import { auth } from "@/lib/auth";
-import { CarType, Class, FuelType, Location, TransmissionType } from "@/lib/generated/prisma";
+import { CarStatus, CarType, Class, FuelType, Location, TransmissionType } from "@/lib/generated/prisma";
 import { prisma } from "@/lib/prisma";
 import { headers } from "next/headers";
 
@@ -84,12 +85,13 @@ export async function getAllCars(take6?: boolean) {
   }
 }
 
-export async function getFilteredCars(search?: string, carType?: string) {
+export async function getFilteredCars(search?: string, carType?: string, status?: string, filter?: FilterDate) {
   try {
     const cars = await prisma.car.findMany({
       where: {
         AND: [
           carType ? { type: carType as CarType } : {},
+          status ? { carStatus: status as CarStatus } : {},
           search ? {
             OR: [
               { brand: { contains: search, mode: "insensitive" } },
@@ -97,7 +99,8 @@ export async function getFilteredCars(search?: string, carType?: string) {
             ]
           } : {},
         ],
-      }, 
+      },
+      orderBy: filter ? { createdAt: filter } : undefined
     });
 
     return cars;

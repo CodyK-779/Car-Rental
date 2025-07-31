@@ -1,11 +1,11 @@
 const Benefits = () => {
   return (
-    <section className="py-16 bg-gray-50 mt-8">
+    <section className="py-16 bg-gray-50">
       <div className="max-w-6xl mx-auto px-4 text-center">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-800">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-3 text-gray-800">
           Why Choose Us
         </h2>
-        <p className="text-gray-600 mb-12">
+        <p className="font-medium text-gray-600 mb-12">
           Enjoy hassle-free rentals with features designed for your comfort and
           safety.
         </p>

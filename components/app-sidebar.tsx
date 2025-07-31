@@ -46,7 +46,7 @@ const tabs = [
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { data: session } = useSession();
-  const { open, isMobile } = useSidebar();
+  const { open, setOpenMobile } = useSidebar();
   const pathname = usePathname();
 
   if (!session) return null;
@@ -85,6 +85,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               <Link
                 key={tab.link}
                 href={tab.link}
+                onClick={() => setOpenMobile(false)}
                 className="flex items-center gap-2"
               >
                 <div className={`${isActive && !open && "md:text-blue-700"}`}>

@@ -68,7 +68,7 @@ const Sidebar = ({ openMenu, setOpenMenu }: Props) => {
             <div className="flex items-center gap-3">
               <Avatar className="size-12">
                 <AvatarImage src={session.user.image!} />
-                <AvatarFallback>
+                <AvatarFallback className="bg-neutral-900 text-white">
                   {session.user.name.charAt(0).toUpperCase()}
                 </AvatarFallback>
               </Avatar>

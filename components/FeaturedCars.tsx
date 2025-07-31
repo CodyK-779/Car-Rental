@@ -12,10 +12,10 @@ const FeaturedCars = async () => {
 
   return (
     <div className="container mt-20">
-      <h1 className="text-3xl sm:text-5xl font-bold text-center text-gray-800">
+      <h1 className="text-4xl sm:text-5xl font-bold text-center text-gray-800">
         Available Cars
       </h1>
-      <p className="text-xl font-semibold text-center mt-4 text-neutral-500">
+      <p className="font-semibold text-center mt-2 text-neutral-500">
         Premium cars currently available for booking
       </p>
       <div className="max-w-7xl mx-auto px-2 mt-20">
@@ -101,8 +101,9 @@ const FeaturedCars = async () => {
               </div>
             </>
           ) : (
-            <p className="text-3xl font-semibold text-center px-4 text-red-500">
-              Sorry There's no cars available to rent.
+            <p className="text-xl sm:text-3xl font-semibold text-center px-4 pb-2 -mt-8 text-neutral-500">
+              Sorry There's no cars available to rent{" "}
+              <span className="ml-1">{`:'(`}</span>
             </p>
           )}
         </div>

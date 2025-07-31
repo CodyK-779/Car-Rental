@@ -20,8 +20,8 @@ const brands = [
 
 const BrandSection = () => {
   return (
-    <div className="mt-10" id="brand">
-      <h1 className="text-2xl sm:text-4xl text-center px-2 font-bold">
+    <div className="mt-10 sm:mt-14" id="brand">
+      <h1 className="text-2xl sm:text-4xl text-center px-2 font-bold text-gray-800">
         Explore our Premium Brands
       </h1>
       <div className="relative w-full overflow-hidden mt-10 sm:mt-16 bg-gray-100 py-2">
@@ -39,28 +39,6 @@ const BrandSection = () => {
             ))}
           </div>
         </Marquee>
-        {/* <motion.div
-          animate={{
-            x: ["0%", "-100%"],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          className="flex items-center justify-center"
-        >
-          {[...brands, ...brands, ...brands, ...brands].map((brand, index) => (
-            <div key={index} className="flex-shrink-0 px-10">
-              <Image
-                src={brand.logo}
-                alt={brand.logo}
-                width={brand.style}
-                height={brand.style}
-              />
-            </div>
-          ))}
-        </motion.div> */}
       </div>
     </div>
   );

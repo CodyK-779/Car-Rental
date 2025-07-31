@@ -89,7 +89,7 @@ export default async function ManageBookingsPage() {
             </div>
           </div>
         ) : (
-          <p className="text-xl font-semibold text-center mt-20 text-neutral-500">
+          <p className="text-xl font-semibold text-center sm:text-start mt-20 text-neutral-500">
             You haven't booked any cars yet.
           </p>
         )}

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
+import FilterStatus from "./FilterStatus";
 
 interface Props {
   carType: string;
@@ -46,7 +47,7 @@ const FilterCarType = ({ carType }: Props) => {
             key={ct.name}
             onClick={() => handleClick(ct.name)}
             className={`flex flex-col w-28 items-center gap-1.5 rounded-xl border-2 border-neutral-300 ${
-              carType === ct.name && "bg-purple-200"
+              carType === ct.name && "border-purple-600"
             } shadow-md px-2 py-1.5 hover:-translate-y-1.5 hover:shadow-xl transition-all duration-150 ease-in cursor-pointer`}
           >
             <Image src={ct.img} alt={ct.name} width={30} height={30} />
@@ -57,6 +58,7 @@ const FilterCarType = ({ carType }: Props) => {
       <p className="text-xs text-neutral-500 font-medium text-center mt-6">
         Click the same car body type again to cancel the filtering
       </p>
+      <FilterStatus />
     </section>
   );
 };

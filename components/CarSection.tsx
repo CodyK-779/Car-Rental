@@ -3,14 +3,17 @@ import Image from "next/image";
 import { Badge } from "./ui/badge";
 import { MapPin } from "lucide-react";
 import Link from "next/link";
+import { FilterDate } from "./FilterStatus";
 
 interface Props {
   search: string;
   carType: string;
+  status: string;
+  filter: FilterDate;
 }
 
-const CarSection = async ({ search, carType }: Props) => {
-  const cars = await getFilteredCars(search, carType);
+const CarSection = async ({ search, carType, status, filter }: Props) => {
+  const cars = await getFilteredCars(search, carType, status, filter);
 
   if (!cars) return null;
 

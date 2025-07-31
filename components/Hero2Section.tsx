@@ -8,7 +8,7 @@ const Hero2Section = () => {
       <div className="max-w-5xl mx-auto px-4 flex flex-col md:flex-row items-center gap-2">
         {/* Text Content */}
         <div className="flex-1">
-          <h1 className="text-3xl font-bold text-gray-900">
+          <h1 className="text-3xl font-bold text-gray-800">
             Cars for Every Trip
           </h1>
           <p className="mt-4 w-full md:max-w-[450px] text-neutral-600 font-medium leading-relaxed">

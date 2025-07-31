@@ -51,7 +51,7 @@ const Testimonials = () => {
   return (
     <div className="py-16 bg-gray-50">
       <div className="flex flex-col items-center justify-center px-3">
-        <div className="border-2 border-neutral-300 px-3 py-0.5 rounded-full text-xs font-medium">
+        <div className="border-2 border-neutral-300 text-gray-800 px-3 py-0.5 rounded-full text-xs font-medium">
           Testimonials
         </div>
         <h1 className="text-3xl sm:text-4xl font-bold mt-2 text-gray-800">
