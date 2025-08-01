@@ -4,6 +4,9 @@ import { Button } from "./ui/button";
 import Link from "next/link";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
+import { TextAnimate } from "./magicui/text-animate";
+import HomeBg from "./HeroCarMotion";
+import HeroBtnMotion from "./HeroBtnMotion";
 
 const HeroSection = async () => {
   const session = await auth.api.getSession({
@@ -13,32 +16,27 @@ const HeroSection = async () => {
   return (
     <div className="relative sm:min-h-screen bg-neutral-200 pb-16 sm:pb-10 rounded-b-[40px]">
       <div className="flex flex-col items-center justify-center pt-40">
-        <h1 className="max-[380px]:text-3xl text-4xl sm:text-5xl lg:text-7xl text-center font-semibold px-2">
+        <TextAnimate
+          animation="blurInDown"
+          duration={1}
+          viewport={{ once: true }}
+          className="max-[380px]:text-3xl text-4xl sm:text-5xl lg:text-7xl text-center font-bold sm:font-semibold px-2"
+        >
           Premium car rental
-        </h1>
-        <p className="max-[450px]:text-lg text-xl sm:text-2xl font-semibold text-center mt-3.5 px-2 lg:w-[850px]">
-          Explore our curated fleet of high-end vehicles—unmatched comfort,{" "}
+        </TextAnimate>
+        <TextAnimate
+          animation="blurIn"
+          className="max-[450px]:text-lg text-base sm:text-2xl font-semibold text-center mt-3.5 px-2 lg:w-[850px] text-neutral-700"
+          duration={1.75}
+          viewport={{ once: true }}
+        >
+          Explore our curated fleet of high-end vehicles—unmatched comfort,
           performance, and style for every journey.
-        </p>
+        </TextAnimate>
 
-        <div className="absolute max-[380px]:top-60 max-[450px]:top-52 top-48 sm:top-32">
-          <Image src="/homeBg.png" alt="car bg" width={800} height={700} />
-        </div>
-        <div className="max-[450px]:mt-[180px] mt-[200px] sm:mt-[300px] z-10">
-          <div className="flex items-center gap-4">
-            <Button
-              asChild
-              className="rounded-full font-semibold sm:px-8 sm:py-5"
-            >
-              <Link href="#brand">Get Started</Link>
-            </Button>
-            <Button
-              asChild
-              className="rounded-full font-semibold sm:px-8 sm:py-5"
-            >
-              <Link href={session ? "/cars" : "/login"}>Start Booking</Link>
-            </Button>
-          </div>
+        <HomeBg />
+        <div className="max-[352px]:mt-[160px] max-[450px]:mt-[180px] mt-[200px] sm:mt-[300px] z-10">
+          <HeroBtnMotion />
         </div>
       </div>
     </div>

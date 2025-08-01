@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useAnimation, useInView } from "motion/react";
-import { useEffect, useRef } from "react";
+import { JSX, useEffect, useRef } from "react";
 
 interface BoxRevealProps {
   children: JSX.Element;
@@ -60,7 +60,7 @@ export const BoxReveal = ({
           bottom: 4,
           left: 0,
           right: 0,
-          zIndex: 20,
+          zIndex: 10,
           background: boxColor,
         }}
       />
