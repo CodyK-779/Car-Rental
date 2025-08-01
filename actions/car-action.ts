@@ -172,10 +172,21 @@ export async function toggleStatus(carId: string) {
     const car = await prisma.car.findUnique({
       where: {
         id: carId
+      },
+      include: {
+        booking: {
+          where: {
+            status: "Confirmed"
+          }
+        }
       }
     });
 
     if (!car) return;
+
+    if (car.booking.length > 0) {
+      throw new Error("Someone had already booked this car failed to update status");
+    }
 
     const status = car.carStatus === "AVAILABLE" ? "UNAVAILABLE" : "AVAILABLE"
 
@@ -189,7 +200,7 @@ export async function toggleStatus(carId: string) {
     return { success: true }
   } catch (error) {
     console.error("Failed to update status", error);
-    throw new Error("Failed to update status");
+    throw error;
   }
 }
 

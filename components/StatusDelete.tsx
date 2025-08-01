@@ -39,7 +39,14 @@ const StatusDelete = ({ carId, status }: Props) => {
         router.push("/dashboard/manage-cars", { scroll: false });
       }
     } catch (error) {
-      toast.error("Failed to update status");
+      let errorMessage = "Failed to update status";
+
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      } else if (typeof error === "string") {
+        errorMessage = error;
+      }
+      toast.error(errorMessage, { position: "top-right" });
     } finally {
       setIsPending(false);
     }
@@ -50,8 +57,10 @@ const StatusDelete = ({ carId, status }: Props) => {
 
     try {
       const results = await deleteCar(carId);
-      if (!results?.success) {
-        toast.success("Car listing deleted successfully!");
+      if (results?.success) {
+        toast.success("Car listing deleted successfully!", {
+          position: "top-right",
+        });
         router.push("/dashboard/manage-cars", { scroll: false });
       }
     } catch (error) {

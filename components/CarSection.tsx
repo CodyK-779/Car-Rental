@@ -123,11 +123,19 @@ Props) => {
         </p>
       )}
       {carData.length > 6 && (
-        <PaginationControls
-          hasNextPage={end < carData.length}
-          hasPreviousPage={start > 0}
-          totalCars={carData.length}
-        />
+        <>
+          <PaginationControls
+            hasNextPage={end < carData.length}
+            hasPreviousPage={start > 0}
+            totalCars={carData.length}
+          />
+          <p className="text-xs text-neutral-500 font-medium text-center">
+            Note: Filter all the things you're looking for before going to page
+            2 or more because <br className="hidden sm:block" /> filtering only
+            works in page 1 for some reason, I will fix this as soon as i find
+            the solution.
+          </p>
+        </>
       )}
     </div>
   );

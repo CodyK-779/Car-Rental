@@ -35,8 +35,6 @@ export default async function CarsPage({
         carType={type}
         status={status}
         filter={filter}
-        // page={Number(page)}
-        // per_page={Number(per_page)}
         start={start}
         end={end}
       />
