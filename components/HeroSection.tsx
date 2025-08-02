@@ -4,7 +4,7 @@ import HeroBtnMotion from "./HeroBtnMotion";
 
 const HeroSection = async () => {
   return (
-    <div className="relative sm:min-h-screen bg-sky-100 pb-16 sm:pb-10 rounded-b-[40px]">
+    <div className="relative sm:min-h-screen bg-sky-50 pb-16 sm:pb-10 rounded-b-[40px]">
       <div className="flex flex-col items-center justify-center pt-40">
         <TextAnimate
           animation="blurInDown"
