@@ -1,4 +1,5 @@
 import { getCarDetails } from "@/actions/car-action";
+import BackNavigationBtn from "@/components/BackNavigationBtn";
 import CreateBooking from "@/components/CreateBooking";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -55,12 +56,7 @@ export default async function CarDetailPage({
         return null;
       })}
       <div className="max-w-6xl w-full mx-auto px-4">
-        <Button asChild className="mb-8 mt-16">
-          <Link href="/cars" className="flex items-center gap-2">
-            <ArrowLeftIcon />
-            Back to Cars
-          </Link>
-        </Button>
+        <BackNavigationBtn />
         {carDetails.map((car) => (
           <div
             key={car.id}
