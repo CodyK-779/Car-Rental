@@ -35,9 +35,7 @@ const PaginationControls = ({
               className="cursor-pointer"
               onClick={() => {
                 if (hasPreviousPage) {
-                  router.push(`?page=${Number(page) - 1}`, {
-                    scroll: false,
-                  });
+                  router.push(`?page=${Number(page) - 1}`);
                 }
               }}
             />
@@ -56,9 +54,7 @@ const PaginationControls = ({
               className="cursor-pointer"
               onClick={() => {
                 if (hasNextPage) {
-                  router.push(`?page=${Number(page) + 1}`, {
-                    scroll: false,
-                  });
+                  router.push(`?page=${Number(page) + 1}`);
                 }
               }}
             />
