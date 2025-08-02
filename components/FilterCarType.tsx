@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import FilterStatus from "./FilterStatus";
+import { BoxReveal } from "./magicui/box-reveal";
 
 interface Props {
   carType: string;
@@ -40,7 +41,14 @@ const FilterCarType = ({ carType }: Props) => {
 
   return (
     <section className="container mt-6">
-      <h1 className="text-3xl font-bold text-center">Browse By Body Type</h1>
+      <div className="flex items-center justify-center">
+        <BoxReveal boxColor={"#5046e6"} duration={0.8}>
+          <h1 className="text-3xl font-bold text-center">
+            Browse By Body Type
+          </h1>
+        </BoxReveal>
+      </div>
+
       <div className="flex items-center justify-center flex-wrap gap-4 mt-8">
         {carTypes.map((ct) => (
           <div

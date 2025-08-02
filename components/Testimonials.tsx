@@ -12,7 +12,6 @@ interface Props {
 
 const firstRow = testimonials.slice(0, 6);
 const secondRow = testimonials.slice(6, 12);
-const thirdRow = testimonials.slice(testimonials.length / 2);
 
 const ReviewCard = ({ name, email, img, review, stars }: Props) => {
   return (

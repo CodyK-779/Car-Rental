@@ -4,7 +4,6 @@ import Link from "next/link";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { getAllCars } from "@/actions/car-action";
-import { SparklesText } from "./magicui/sparkles-text";
 
 const FeaturedCars = async () => {
   const cars = await getAllCars(true);

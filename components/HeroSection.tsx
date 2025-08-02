@@ -1,18 +1,8 @@
-import Image from "next/image";
-import React from "react";
-import { Button } from "./ui/button";
-import Link from "next/link";
-import { auth } from "@/lib/auth";
-import { headers } from "next/headers";
 import { TextAnimate } from "./magicui/text-animate";
 import HomeBg from "./HeroCarMotion";
 import HeroBtnMotion from "./HeroBtnMotion";
 
 const HeroSection = async () => {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-
   return (
     <div className="relative sm:min-h-screen bg-neutral-200 pb-16 sm:pb-10 rounded-b-[40px]">
       <div className="flex flex-col items-center justify-center pt-40">

@@ -11,8 +11,6 @@ interface Props {
   carType: string;
   status: string;
   filter: FilterDate;
-  // page: number;
-  // per_page: number;
   start: number;
   end: number;
 }
@@ -24,17 +22,8 @@ const CarSection = async ({
   filter,
   start,
   end,
-}: // page,
-// per_page,
-Props) => {
-  const carData = await getFilteredCars(
-    // page,
-    // per_page,
-    search,
-    carType,
-    status,
-    filter
-  );
+}: Props) => {
+  const carData = await getFilteredCars(search, carType, status, filter);
 
   if (!carData) return null;
 

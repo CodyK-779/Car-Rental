@@ -2,7 +2,6 @@ import { getCarDetails } from "@/actions/car-action";
 import CreateBooking from "@/components/CreateBooking";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import GradientText from "@/components/ui/GradientText/GradientText";
 import { format } from "date-fns";
 import { ArrowLeftIcon } from "lucide-react";
 import Image from "next/image";
@@ -124,9 +123,12 @@ export default async function CarDetailPage({
                     <strong>Price/Day:</strong> ${car.dailyPrice}
                   </div>
                 </div>
-                <p className="text-gray-800 mt-4 text-base leading-relaxed">
-                  {car.description}
-                </p>
+                <div className="flex flex-col pt-4 gap-1.5">
+                  <p className="font-semibold text-gray-700">Description</p>
+                  <p className="text-neutral-700 text-base leading-relaxed">
+                    {car.description}
+                  </p>
+                </div>
               </div>
               <hr className="border border-neutral-300" />
               <div className="flex flex-col pb-4">

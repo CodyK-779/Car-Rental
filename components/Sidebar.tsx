@@ -14,7 +14,7 @@ interface Props {
   openMenu: boolean;
   setOpenMenu: (openMenu: boolean) => void;
 }
-//
+
 const sidebarStyles =
   "lg:hidden fixed top-0 right-0 rounded-md z-30 min-h-screen w-[350px] max-[450px]:w-full max-[450px]:bg-white/60 max-[450px]:backdrop-blur-lg bg-neutral-100 shadow transition-transform duration-200 ease-in";
 

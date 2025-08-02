@@ -1,4 +1,5 @@
 import { getBookedCars } from "@/actions/booking-action";
+import { BoxReveal } from "@/components/magicui/box-reveal";
 import { auth } from "@/lib/auth";
 import { BookingStatus } from "@/lib/generated/prisma";
 import { format } from "date-fns";
@@ -28,12 +29,20 @@ export default async function BookingsPage() {
 
   return (
     <section className="mt-32 pb-20 max-w-4xl w-full mx-auto px-4">
-      <h1 className="text-5xl font-semibold text-center mb-3">My Bookings</h1>
-      <p className="text-center font-medium text-neutral-500">
-        These are all the Bookings that you've made. You can either{" "}
-        <br className="hidden md:block" /> Cancel or Confirm your Bookings in
-        your Dashboard Manage Bookings section
-      </p>
+      <div className="flex flex-col items-center justify-center">
+        <BoxReveal boxColor={"#5046e6"} duration={0.5}>
+          <h1 className="text-5xl font-semibold text-center mb-3">
+            My Bookings
+          </h1>
+        </BoxReveal>
+        <BoxReveal boxColor={"#5046e6"} duration={0.5}>
+          <p className="text-center font-medium text-neutral-500">
+            These are all the Bookings that you've made. You can either{" "}
+            <br className="hidden md:block" /> Cancel or Confirm your Bookings
+            in your Dashboard Manage Bookings section
+          </p>
+        </BoxReveal>
+      </div>
       <div className="w-full mt-16">
         {bookings.length > 0 ? (
           <div>
