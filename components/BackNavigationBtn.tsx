@@ -13,7 +13,7 @@ const BackNavigationBtn = () => {
       className="mb-8 mt-16 flex items-center gap-2"
     >
       <ArrowLeftIcon />
-      Back
+      Go Back
     </Button>
   );
 };
