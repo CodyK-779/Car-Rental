@@ -24,7 +24,7 @@ const BrandSection = () => {
       <h1 className="text-2xl sm:text-4xl text-center px-2 font-bold text-gray-800">
         Explore our Premium Brands
       </h1>
-      <div className="relative w-full overflow-hidden mt-10 sm:mt-16 bg-sky-50 py-2">
+      <div className="relative w-full overflow-hidden mt-10 sm:mt-16 bg-gray-100 py-2">
         <Marquee pauseOnHover className="sm:[--duration:40s] [--duration:50s]">
           <div className="flex items-center justify-center">
             {[...brands, ...brands].map((brand, index) => (
