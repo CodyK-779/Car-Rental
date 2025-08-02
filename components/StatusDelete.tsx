@@ -32,28 +32,18 @@ const StatusDelete = ({ carId, status }: Props) => {
     setIsPending(true);
 
     try {
-      const confirmedBooking = await prisma.booking.findFirst({
-        where: {
-          id: carId,
-          status: "Confirmed",
-        },
-      });
-
-      if (confirmedBooking) {
-        toast.error(
-          "Someone had already booked this car, failed to update status",
-          { position: "top-right" }
-        );
-        setIsPending(false);
-        return;
-      }
-
       const results = await toggleStatus(carId);
       if (results?.success) {
         toast.success("Status updated successfully!", {
           position: "top-right",
         });
         router.push("/dashboard/manage-cars", { scroll: false });
+      } else {
+        toast.error(
+          "Someone had already booked this car, failed to update status",
+          { position: "top-right" }
+        );
+        setIsPending(false);
       }
     } catch (error) {
       toast.error("Failed to update status", { position: "top-right" });
