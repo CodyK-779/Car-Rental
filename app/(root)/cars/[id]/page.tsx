@@ -2,11 +2,8 @@ import { getCarDetails } from "@/actions/car-action";
 import BackNavigationBtn from "@/components/BackNavigationBtn";
 import CreateBooking from "@/components/CreateBooking";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
 import { format } from "date-fns";
-import { ArrowLeftIcon } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 
 export default async function CarDetailPage({
   params,

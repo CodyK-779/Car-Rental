@@ -9,7 +9,6 @@ const BackNavigationBtn = () => {
 
   return (
     <Button
-      asChild
       onClick={() => router.back()}
       className="mb-8 mt-16 flex items-center gap-2"
     >
