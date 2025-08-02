@@ -17,6 +17,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "./ui/alert-dialog";
+import { prisma } from "@/lib/prisma";
 
 interface Props {
   carId: string;
@@ -31,6 +32,22 @@ const StatusDelete = ({ carId, status }: Props) => {
     setIsPending(true);
 
     try {
+      const confirmedBooking = await prisma.booking.findFirst({
+        where: {
+          id: carId,
+          status: "Confirmed",
+        },
+      });
+
+      if (confirmedBooking) {
+        toast.error(
+          "Someone had already booked this car, failed to update status",
+          { position: "top-right" }
+        );
+        setIsPending(false);
+        return;
+      }
+
       const results = await toggleStatus(carId);
       if (results?.success) {
         toast.success("Status updated successfully!", {
@@ -39,14 +56,7 @@ const StatusDelete = ({ carId, status }: Props) => {
         router.push("/dashboard/manage-cars", { scroll: false });
       }
     } catch (error) {
-      let errorMessage = "Failed to update status";
-
-      if (error instanceof Error) {
-        errorMessage = error.message;
-      } else if (typeof error === "string") {
-        errorMessage = error;
-      }
-      toast.error(errorMessage, { position: "top-right" });
+      toast.error("Failed to update status", { position: "top-right" });
     } finally {
       setIsPending(false);
     }
