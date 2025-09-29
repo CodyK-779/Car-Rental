@@ -31,12 +31,12 @@ export default async function BookingsPage() {
     <section className="mt-32 pb-20 max-w-4xl w-full mx-auto px-4">
       <div className="flex flex-col items-center justify-center">
         <BoxReveal boxColor={"#5046e6"} duration={0.5}>
-          <h1 className="text-5xl font-semibold text-center mb-3">
+          <h1 className="min-[400px]:text-5xl min-[350px]:text-4xl text-3xl font-semibold text-center mb-3">
             My Bookings
           </h1>
         </BoxReveal>
         <BoxReveal boxColor={"#5046e6"} duration={0.5}>
-          <p className="text-center font-medium text-neutral-500">
+          <p className="min-[400px]:text-base text-sm text-center font-medium text-neutral-500">
             These are all the Bookings that you've made. You can either{" "}
             <br className="hidden md:block" /> Cancel or Confirm your Bookings
             in your Dashboard Manage Bookings section

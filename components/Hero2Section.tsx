@@ -10,12 +10,12 @@ const Hero2Section = () => {
         {/* Text Content */}
         <div className="flex-1">
           <BoxReveal boxColor={"#5046e6"} duration={1}>
-            <h1 className="text-3xl font-bold text-gray-800">
+            <h1 className="min-[400px]:text-3xl text-2xl font-bold text-gray-800">
               Cars for Every Trip
             </h1>
           </BoxReveal>
           <BoxReveal boxColor={"#5046e6"} duration={1}>
-            <p className="mt-4 w-full md:max-w-[450px] text-neutral-600 font-medium leading-relaxed">
+            <p className="mt-4 w-full md:max-w-[450px] min-[400px]:text-base text-sm text-neutral-600 font-medium leading-relaxed">
               Whether it’s a weekend getaway, a business trip, or a long-term
               rental, our cars are ready for every journey. Choose from a wide
               range of well-maintained, modern vehicles — all with transparent

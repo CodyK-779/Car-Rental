@@ -53,10 +53,10 @@ const Testimonials = () => {
         <div className="border-2 border-neutral-300 text-gray-800 px-3 py-0.5 rounded-full text-xs font-medium">
           Testimonials
         </div>
-        <h1 className="text-3xl sm:text-4xl font-bold mt-2 text-gray-800">
+        <h1 className="sm:text-4xl min-[350px]:text-3xl text-2xl font-bold mt-2 text-gray-800">
           Our trusted clients
         </h1>
-        <p className="text-base text-center mt-1 font-medium text-gray-600 mb-8">
+        <p className="min-[350px]:text-base text-sm text-center mt-1 font-medium text-gray-600 mb-8">
           Our mission is to drive progress and enhance the lives of our
           customers by delivering <br className="hidden sm:block" /> superior
           vehicles and services that exceed expectations.

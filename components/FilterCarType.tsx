@@ -43,7 +43,7 @@ const FilterCarType = ({ carType }: Props) => {
     <section className="container mt-6">
       <div className="flex items-center justify-center">
         <BoxReveal boxColor={"#5046e6"} duration={0.8}>
-          <h1 className="text-3xl font-bold text-center">
+          <h1 className="min-[400px]:text-3xl text-2xl font-bold text-center">
             Browse By Body Type
           </h1>
         </BoxReveal>

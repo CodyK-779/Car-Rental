@@ -12,7 +12,7 @@ const FeaturedCars = async () => {
 
   return (
     <div className="container mt-20">
-      <h1 className="text-4xl sm:text-5xl font-bold text-center text-gray-800">
+      <h1 className="sm:text-5xl min-[350px]:text-4xl text-3xl font-bold text-center text-gray-800">
         Available Cars
       </h1>
       <p className="font-semibold text-center mt-2 text-neutral-500">

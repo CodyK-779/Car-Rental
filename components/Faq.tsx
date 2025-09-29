@@ -40,7 +40,7 @@ const Faq = () => {
 
   return (
     <div className="mt-20 pb-6">
-      <h1 className="text-3xl font-bold text-center px-2 text-gray-800">
+      <h1 className="min-[450px]:text-3xl min-[350px]:text-2xl text-xl font-bold text-center px-2 text-gray-800">
         Frequently asked questions
       </h1>
       <div className="max-w-3xl mt-10 w-full mx-auto px-4">

@@ -17,7 +17,7 @@ const Hero2Car = () => {
         alt="audi"
         width={1000}
         height={500}
-        className="w-full min-w-[560px] max-[768px]:min-w-[500px] h-auto object-cover"
+        className="min-[768px]:min-w-[560px] min-[450px]:min-w-[500px] min-[375px]:min-w-[450px] max-w-[400px] h-auto object-cover mx-auto"
         sizes="(max-width: 768px) 100vw, 50vw"
       />
     </motion.div>

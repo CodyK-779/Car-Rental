@@ -30,7 +30,7 @@ const Footer = () => {
             <Image src={logo} alt="Logo" width={100} height={100} />
             <p className="text-2xl font-bold">Car Rental</p>
           </div>
-          <p className="font-medium -mt-2 w-[340px] md:w-full text-neutral-700">
+          <p className="font-medium -mt-2 w-auto min-[360px]:w-[340px] md:w-full text-neutral-700">
             Whether you're looking to book your next ride or list your own car
             to earn, we've got you covered.
           </p>
@@ -98,7 +98,7 @@ const Footer = () => {
           © 2025 Blog Studio All rights reserved.{" "}
           <span className="mx-4 hidden md:inline-block">|</span>
         </p>
-        <div className="flex items-center gap-4 md:text-lg font-medium">
+        <div className="flex items-center gap-4 md:text-lg max-[350px]:text-sm font-medium">
           <p className="hover:underline cursor-pointer">Privacy Policy</p>
           <p className="hover:underline cursor-pointer">Terms of Service</p>
           <p className="hover:underline cursor-pointer">Contact Us</p>

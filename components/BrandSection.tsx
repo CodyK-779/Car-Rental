@@ -21,7 +21,7 @@ const brands = [
 const BrandSection = () => {
   return (
     <div className="mt-10 sm:mt-14" id="brand">
-      <h1 className="text-2xl sm:text-4xl text-center px-2 font-bold text-gray-800">
+      <h1 className="sm:text-4xl min-[350px]:text-2xl text-xl text-center px-2 font-bold text-gray-800">
         Explore our Premium Brands
       </h1>
       <div className="relative w-full overflow-hidden mt-10 sm:mt-16 bg-gray-100 py-2">
