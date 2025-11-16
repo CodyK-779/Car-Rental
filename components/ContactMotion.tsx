@@ -40,7 +40,7 @@ const ContactMotion = () => {
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{
-            duration: 0.3,
+            duration: 0.6,
             delay: i * 0.08,
             ease: "easeOut",
           }}
