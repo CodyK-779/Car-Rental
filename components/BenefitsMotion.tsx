@@ -49,7 +49,7 @@ const BenefitsMotion = () => {
             delay: i * 0.06,
             ease: "easeOut",
           }}
-          className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition duration-300"
+          className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition duration-300 ease-out"
         >
           <div className="text-blue-600 mb-4 text-4xl">{b.icon}</div>
           <h3 className="text-xl font-semibold text-gray-800 mb-2">

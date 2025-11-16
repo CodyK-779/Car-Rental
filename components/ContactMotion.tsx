@@ -44,7 +44,7 @@ const ContactMotion = () => {
             delay: i * 0.08,
             ease: "easeOut",
           }}
-          className="p-4 border-2 border-neutral-300 rounded-lg hover:shadow-xl transition duration-200 ease-in cursor-pointer"
+          className="p-4 border-2 border-neutral-300 rounded-lg hover:shadow-xl transition duration-300 ease-out cursor-pointer"
         >
           <div className="p-2 border-2 rounded-md w-fit">{d.icon}</div>
           <div className="flex flex-col pt-10">
