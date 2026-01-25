@@ -31,8 +31,10 @@ const FilterCarType = ({ carType }: Props) => {
     const params = new URLSearchParams(searchParams.toString());
 
     if (params.get("type") === carType) {
+      params.set("page", "1");
       params.delete("type");
     } else {
+      params.set("page", "1");
       params.set("type", carType);
     }
 
