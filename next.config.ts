@@ -3,7 +3,12 @@ const { PrismaPlugin } = require('@prisma/nextjs-monorepo-workaround-plugin')
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ["utfs.io"],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'utfs.io',
+      },
+    ],
   },
   webpack: (config, { isServer }) => {
     if (isServer) {
