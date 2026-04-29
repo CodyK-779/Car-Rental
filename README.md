@@ -39,7 +39,7 @@ A modern full-stack car rental platform that allows users to **book vehicles** o
 
 ---
 
-## 🏗️ Tech Stack
+## ⚙️ Tech Stack
 
 - **Frontend:** Next.js(App Router), TypeScript, Tailwind CSS, shadcn/ui
 - **Backend:** Prisma ORM, PostgreSQL, BetterAuth  
@@ -53,7 +53,7 @@ A modern full-stack car rental platform that allows users to **book vehicles** o
 
 ---
 
-## ⚙️ Installation
+## Installation
 
 ```bash
 # Clone the repo
