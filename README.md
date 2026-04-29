@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚗 Car Rental — Full-Stack Marketplace
 
-## Getting Started
+A modern full-stack car rental platform that allows users to **book vehicles** or **list their own cars**, featuring secure authentication, real-time availability, and a powerful admin dashboard.
 
-First, run the development server:
+🔗 **Live Demo:** [Live Demo]  
+📦 **Repository:** [GitHub]
+
+---
+
+## ✨ Features
+
+### 👤 User Functionality
+- Browse and search cars with **advanced filtering**
+- View detailed car listings with images
+- Book vehicles with **date validation & availability checks**
+- Manage personal bookings and listings
+
+### 🚘 Car Owners
+- List vehicles with image uploads
+- Edit and manage car listings
+- Track booking requests and reservations
+
+### 🛠️ Admin Dashboard
+- Review and manage users
+- Moderate vehicle listings
+- Monitor and control all reservations
+
+---
+
+## 🧠 Key Highlights
+
+- Built a **full-stack marketplace system** with both renter and owner workflows  
+- Designed a **secure booking system** with:
+  - Date conflict prevention  
+  - Real-time availability logic  
+- Implemented **relational data modeling** using Prisma + PostgreSQL  
+- Developed a **responsive, modern UI** with Tailwind CSS  
+- Integrated **image uploads** for listings using UploadThing  
+- Created scalable backend logic using **Next.js server actions / API routes**
+
+---
+
+## 🏗️ Tech Stack
+
+- **Frontend:** Next.js(App Router), TypeScript, Tailwind CSS, shadcn/ui
+- **Backend:** Prisma ORM, PostgreSQL, BetterAuth  
+- **File Uploads:** UploadThing  
+
+---
+
+## 📸 Screenshots
+
+> Add screenshots here (homepage, listing page, dashboard, booking flow)
+
+---
+
+## ⚙️ Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+# Clone the repo
+git clone https://github.com/CodyK-779/Car-Rental.git
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Navigate into the project
+cd car-rental
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Install dependencies
+npm install
