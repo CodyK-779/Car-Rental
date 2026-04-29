@@ -2,8 +2,8 @@
 
 A modern full-stack car rental platform that allows users to **book vehicles** or **list their own cars**, featuring secure authentication, real-time availability, and a powerful admin dashboard.
 
-🔗 **Live Demo:** [Live Demo]  
-📦 **Repository:** [GitHub]
+🔗 [Live Demo](https://car-rental-kzt.vercel.app)
+📦 [Repository](https://github.com/CodyK-779/Car-Rental.git)
 
 ---
 
@@ -21,7 +21,6 @@ A modern full-stack car rental platform that allows users to **book vehicles** o
 - Track booking requests and reservations
 
 ### 🛠️ Admin Dashboard
-- Review and manage users
 - Moderate vehicle listings
 - Monitor and control all reservations
 
@@ -36,7 +35,7 @@ A modern full-stack car rental platform that allows users to **book vehicles** o
 - Implemented **relational data modeling** using Prisma + PostgreSQL  
 - Developed a **responsive, modern UI** with Tailwind CSS  
 - Integrated **image uploads** for listings using UploadThing  
-- Created scalable backend logic using **Next.js server actions / API routes**
+- Created scalable backend logic using **Next.js server actions**
 
 ---
 
@@ -50,7 +49,7 @@ A modern full-stack car rental platform that allows users to **book vehicles** o
 
 ## 📸 Screenshots
 
-> Add screenshots here (homepage, listing page, dashboard, booking flow)
+![image alt](https://github.com/CodyK-779/Car-Rental/blob/d0513f2b2db60f85ac5056b46eb3511f48b343a0/website_screenshot.png)
 
 ---
 
